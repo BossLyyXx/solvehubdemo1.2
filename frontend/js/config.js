@@ -6,7 +6,7 @@ if (window.location.hostname === '127.0.0.1' || window.location.hostname === 'lo
   API_BASE_URL = 'http://127.0.0.1:5000';
 } else {
   // ถ้าไม่ใช่ แสดงว่าเป็นเว็บจริง (Production)
-  API_BASE_URL = 'https://solvehubdemo1-1.onrender.com';
+  API_BASE_URL = 'https://solvehubdemo1-2.onrender.com';
 }
 
 export { API_BASE_URL };
