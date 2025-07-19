@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - SolveHub</title>
+    <link rel="icon" type="image/x-icon" href="../DekAi.ico?v=2">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <h1 class="logo">SolveHub Admin</h1>
+        <p class="subtitle">เข้าสู่ระบบสำหรับผู้ดูแล</p>
+        <form id="login-form">
+            <div class="input-group">
+                <label for="username">ชื่อผู้ใช้</label>
+                <input type="text" id="username" name="username" required value="admin">
+            </div>
+            <div class="input-group">
+                <label for="password">รหัสผ่าน</label>
+                <input type="password" id="password" name="password" required value="admin123">
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">เข้าสู่ระบบ</button>
+        </form>
+         <div class="extra-links">
+            <a href="index.html">สำหรับผู้ใช้งานทั่วไป</a>
+        </div>
+    </div>
+    <script type="module" src="js/auth.js"></script>
+</body>
+</html>

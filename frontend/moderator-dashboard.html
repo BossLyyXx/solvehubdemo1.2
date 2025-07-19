@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moderator Dashboard - SolveHub</title>
+    <link rel="icon" type="image/x-icon" href="../DekAi.ico?v=2">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="sidebar">
+            <h1 class="logo">SolveHub</h1>
+            <nav id="sidebar-nav">
+                <ul>
+                    <li class="active" data-view="solutions"><a href="#">จัดการเฉลย</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="logout-btn" class="btn btn-secondary">ออกจากระบบ</button>
+            </div>
+        </aside>
+        
+        <main class="admin-content">
+            <div id="view-solutions" class="view-container">
+                <header class="admin-header">
+                    <div class="header-actions">
+                        <button id="add-solution-btn-header" class="btn btn-primary">เพิ่มเฉลยใหม่</button>
+                        <button id="theme-toggle-solutions" class="btn btn-secondary">🌙</button>
+                    </div>
+                </header>
+                <div class="content-table"></div>
+            </div>
+        </main>
+    </div>
+
+    <div id="solution-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="solution-modal-title"></h2>
+            <form id="solution-form">
+                <input type="hidden" id="solution-id">
+                <div class="form-group">
+                    <label for="solution-title">ชื่อหัวข้อ</label>
+                    <input type="text" id="solution-title" required>
+                </div>
+                <div class="form-group">
+                    <label for="solution-subject">เลือกวิชา</label>
+                    <select id="solution-subject" required></select>
+                </div>
+                <div class="form-group">
+                    <label for="solution-text-content">เนื้อหา (ข้อความ)</label>
+                    <textarea id="solution-text-content" rows="6"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary cancel-btn">ยกเลิก</button>
+                    <button type="submit" class="btn btn-primary">บันทึก</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <div id="file-upload-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>อัปโหลดไฟล์สำหรับเฉลย</h2>
+            <form id="file-upload-form">
+                <input type="hidden" id="upload-solution-id">
+                <div class="form-group">
+                    <div id="file-upload-area">
+                        <input type="file" id="file-input" hidden accept="image/*,application/pdf,.zip,.rar">
+                        <p>คลิก หรือลากไฟล์มาวาง</p>
+                        <div id="file-preview"></div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary cancel-btn">ปิด</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="js/moderator.js"></script>
+    <script src="js/theme-toggle.js"></script>
+</body>
+</html>

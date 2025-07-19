@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เลือกวิชา - SolveHub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="../DekAi.ico?v=2">
+    <style>
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        .user-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        #username-display {
+            font-weight: 500;
+            color: var(--dark-blue);
+        }
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .subject-box {
+            background-color: var(--card-bg); padding: 2rem; border-radius: var(--border-radius-lg);
+            border: 1px solid var(--border-color); text-align: center; cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .subject-box:hover {
+            transform: translateY(-5px); box-shadow: var(--card-shadow); border-color: var(--primary-blue);
+        }
+        .subject-icon { font-size: 3rem; margin-bottom: 1rem; line-height: 1; }
+        .subject-box h3 { margin: 0; color: var(--dark-blue); }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <header class="page-header">
+            <h2>เลือกวิชาที่ต้องการหาเฉลย</h2>
+            <div class="user-actions">
+                <span id="username-display"></span>
+                <button id="logout-btn" class="btn btn-secondary">ออกจากระบบ</button>
+            </div>
+        </header>
+
+        <div class="subjects-grid" id="subjects-grid">
+            </div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - SolveHub</title>
+    <link rel="icon" type="image/x-icon" href="../DekAi.ico?v=2">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="sidebar">
+            <h1 class="logo">SolveHub</h1>
+            <nav id="sidebar-nav">
+                <ul>
+                    <li class="active" data-view="solutions"><a href="#">จัดการเฉลย</a></li>
+                    <li data-view="subjects"><a href="#">จัดการวิชา</a></li>
+                    <li data-view="users"><a href="#">จัดการผู้ใช้</a></li>
+                    <li data-view="logs"><a href="#">บันทึกกิจกรรม</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="logout-btn" class="btn btn-secondary">ออกจากระบบ</button>
+            </div>
+        </aside>
+        
+        <main class="admin-content">
+            <div id="view-solutions" class="view-container">
+                <header class="admin-header">
+                    <h2>จัดการเฉลย</h2>
+                    <div class="header-actions"><button id="add-solution-btn-header" class="btn btn-primary">เพิ่มเฉลยใหม่</button></div>
+                </header>
+                <div class="content-table"></div>
+            </div>
+
+            <div id="view-subjects" class="view-container" style="display: none;">
+                <header class="admin-header">
+                    <h2>จัดการวิชา</h2>
+                    <div class="header-actions"><button id="add-subject-btn-header" class="btn btn-primary">เพิ่มวิชาใหม่</button></div>
+                </header>
+                <div class="content-table"></div>
+            </div>
+
+            <div id="view-users" class="view-container" style="display: none;">
+                <header class="admin-header">
+                    <h2>จัดการผู้ใช้</h2>
+                    <div class="header-actions"><button id="add-user-btn-header" class="btn btn-primary">เพิ่มผู้ใช้ใหม่</button></div>
+                </header>
+                <div class="content-table"></div>
+            </div>
+
+            <div id="view-logs" class="view-container" style="display: none;">
+                <header class="admin-header">
+                    <h2>บันทึกกิจกรรมและประวัติการใช้งาน</h2>
+                </header>
+                
+                <h3>ประวัติการล็อกอิน (100 รายการล่าสุด)</h3>
+                <div class="content-table" id="login-history-container">
+                    </div>
+
+                <h3 style="margin-top: 2rem;">บันทึกกิจกรรม (100 รายการล่าสุด)</h3>
+                <div class="content-table" id="activity-log-container">
+                    </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="solution-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="solution-modal-title"></h2>
+            <form id="solution-form">
+                <input type="hidden" id="solution-id">
+                <div class="form-group">
+                    <label for="solution-title">ชื่อหัวข้อ</label>
+                    <input type="text" id="solution-title" required>
+                </div>
+                <div class="form-group">
+                    <label for="solution-subject">เลือกวิชา</label>
+                    <select id="solution-subject" required></select>
+                </div>
+                <div class="form-group">
+                    <label for="solution-text-content">เนื้อหา (ข้อความ)</label>
+                    <textarea id="solution-text-content" rows="6"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary cancel-btn">ยกเลิก</button>
+                    <button type="submit" class="btn btn-primary">บันทึก</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <div id="file-upload-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>อัปโหลดไฟล์สำหรับเฉลย</h2>
+            <form id="file-upload-form">
+                <input type="hidden" id="upload-solution-id">
+                <div class="form-group">
+                    <div id="file-upload-area">
+                        <input type="file" id="file-input" hidden accept="image/*,application/pdf,.zip,.rar">
+                        <p>คลิก หรือลากไฟล์มาวาง</p>
+                        <div id="file-preview"></div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary cancel-btn">ปิด</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="subject-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="subject-modal-title"></h2>
+            <form id="subject-form">
+                <input type="hidden" id="subject-id">
+                <div class="form-group">
+                    <label for="subject-name">ชื่อวิชา</label>
+                    <input type="text" id="subject-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject-icon">ไอคอน (Emoji)</label>
+                    <input type="text" id="subject-icon">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary cancel-btn">ยกเลิก</button>
+                    <button type="submit" class="btn btn-primary">บันทึก</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="user-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="user-modal-title"></h2>
+            <form id="user-form">
+                <input type="hidden" id="user-id">
+                <div class="form-group">
+                    <label for="user-username">Username</label>
+                    <input type="text" id="user-username" required>
+                </div>
+                <div class="form-group">
+                    <label for="user-password">Password</label>
+                    <input type="password" id="user-password">
+                    <small>กรอกเฉพาะตอนสร้างใหม่ หรือต้องการเปลี่ยนรหัสผ่าน</small>
+                </div>
+                <div class="form-group">
+                    <label for="user-role">Role</label>
+                    <select id="user-role" required>
+                        <option value="user">User</option>
+                        <option value="moderator">Moderator</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary cancel-btn">ยกเลิก</button>
+                    <button type="submit" class="btn btn-primary">บันทึก</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="js/admin.js"></script>
+    <script src="js/theme-toggle.js"></script>
+</body>
+</html>

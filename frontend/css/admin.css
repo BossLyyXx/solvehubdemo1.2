@@ -1,0 +1,260 @@
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+}
+.sidebar {
+    width: 260px;
+    background-color: #0d1b2a;
+    color: #e0e1dd;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+.sidebar .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--card-bg);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sidebar nav a {
+    display: block;
+    padding: 12px 15px;
+    color: #e0e1dd;
+    text-decoration: none;
+    border-radius: var(--border-radius-md);
+    margin-bottom: 0.5rem;
+}
+.sidebar nav a:hover, .sidebar nav li.active a {
+    background-color: #415a77;
+}
+.sidebar-footer {
+    margin-top: auto;
+}
+.admin-content {
+    flex-grow: 1;
+    padding: 2rem 3rem;
+}
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.content-table {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+thead {
+    background-color: #f8f9fa;
+}
+th {
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+tbody tr:last-child td {
+    border-bottom: none;
+}
+tbody tr:hover {
+    background-color: #f8f9fa;
+}
+.action-buttons button {
+    margin-right: 0.5rem;
+    padding: 5px 10px;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+}
+.modal-content {
+    background-color: var(--card-bg);
+    padding: 2rem 3rem;
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    animation: slide-down 0.3s ease-out;
+}
+@keyframes slide-down {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+.close-btn {
+    color: #aaa;
+    position: absolute;
+    top: 1rem; right: 1.5rem;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close-btn:hover, .close-btn:focus { color: #000; }
+.form-group { margin-bottom: 1.5rem; }
+.form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    font-size: 1rem;
+}
+.form-actions { display: flex; justify-content: flex-end; gap: 1rem; margin-top: 2rem; }
+
+/* File Upload Area Styles */
+#file-upload-area {
+    border: 2px dashed var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+#file-upload-area.drag-over {
+    border-color: var(--primary-blue);
+    background-color: var(--light-blue-bg);
+}
+#file-upload-area p { margin: 1rem 0; color: var(--text-secondary); }
+#file-preview { margin-top: 1rem; font-weight: 500; }
+
+/* --- CSS สำหรับปุ่มลบ (Modal) --- */
+.delete-confirmation-modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 1050;
+}
+.delete-confirmation-modal-content {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    animation: slide-down 0.3s ease-out;
+}
+.delete-confirmation-modal-content h3 {
+    color: var(--danger-red);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+.delete-confirmation-modal-content p {
+    margin-bottom: 2rem;
+    color: var(--text-secondary);
+}
+.delete-confirmation-modal-content .modal-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/* --- CSS สำหรับ Empty State --- */
+.empty-state-container {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+.empty-state-icon {
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--primary-blue);
+    margin-bottom: 1.5rem;
+    opacity: 0.7;
+}
+.empty-state-container h3 {
+    font-size: 1.5rem;
+    color: var(--dark-blue);
+    margin-bottom: 0.5rem;
+}
+.empty-state-container p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* --- CSS สำหรับมือถือ (Responsive Design) --- */
+@media (max-width: 800px) {
+
+    /* เปลี่ยน layout หลักให้เรียงจากบนลงล่าง */
+    .admin-layout {
+        flex-direction: column;
+    }
+
+    /* ปรับขนาด sidebar ให้เต็มความกว้างแนวนอน */
+    .sidebar {
+        width: 100%;
+        height: auto; /* ให้ความสูงปรับตามเนื้อหา */
+        min-height: 0;
+        flex-direction: row; /* จัดเรียงโลโก้กับเมนูแนวนอน */
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.5rem;
+    }
+
+    .sidebar .logo {
+        margin-bottom: 0; /* เอา margin ด้านล่างออก */
+    }
+
+    /* ซ่อนเมนูหลักไว้ก่อน */
+    .sidebar nav {
+        display: none;
+    }
+
+    /* ซ่อนปุ่มออกจากระบบใน sidebar */
+    .sidebar-footer {
+        display: none;
+    }
+
+    /* ปรับระยะห่างของ content หลัก */
+    .admin-content {
+        padding: 1.5rem;
+    }
+
+    /* ทำให้ตารางที่ข้อมูลยาวเกินไปสามารถเลื่อนซ้าย-ขวาได้ */
+    .content-table {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* ทำให้เลื่อนลื่นบน iOS */
+    }
+
+    /* ลดขนาดตัวอักษรและปุ่มใน Header ของ content */
+    .admin-header h2 {
+        font-size: 1.25rem;
+    }
+
+    .header-actions .btn {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.9rem;
+    }
+}

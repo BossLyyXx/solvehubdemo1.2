@@ -1,0 +1,7 @@
+Flask
+Flask-SQLAlchemy
+Flask-Cors
+Werkzeug
+gunicorn
+psycopg2-binary
+PyJWT
