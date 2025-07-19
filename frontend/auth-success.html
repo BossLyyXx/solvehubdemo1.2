@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>กำลังล็อกอิน...</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>กำลังนำคุณเข้าสู่ระบบ...</h2>
+        <p>กรุณารอสักครู่</p>
+    </div>
+
+    <script>
+        function redirectToDashboard(role) {
+            if (role === 'admin') {
+                window.location.replace('admin-dashboard.html');
+            } else if (role === 'moderator') {
+                window.location.replace('moderator-dashboard.html');
+            } else {
+                window.location.replace('subjects.html');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const token = params.get('token');
+            const role = params.get('role');
+            const username = params.get('username');
+
+            if (token && role && username) {
+                localStorage.setItem('access_token', token);
+                localStorage.setItem('user_role', role);
+                localStorage.setItem('username', username);
+                redirectToDashboard(role);
+            } else {
+                document.querySelector('.container').innerHTML = '<h2>เกิดข้อผิดพลาดในการล็อกอิน</h2><p>กำลังนำคุณกลับไปหน้าแรก...</p>';
+                setTimeout(() => {
+                    window.location.replace('index.html');
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>
