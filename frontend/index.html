@@ -13,6 +13,13 @@
     <div class="login-container">
         <h1 class="logo">SolveHub</h1>
         <p class="subtitle">เข้าสู่ระบบเพื่อดูเฉลยการบ้าน</p>
+
+        <a href="/login/google" class="btn btn-google">
+            <img src="assets/images/google-logo.svg" alt="Google logo">
+            Sign in with Google (@rmutsvmail.com)
+        </a>
+        <div class="divider"><span>หรือ</span></div>
+
         <form id="login-form">
             <div class="input-group">
                 <label for="username">ชื่อผู้ใช้</label>
@@ -22,9 +29,9 @@
                 <label for="password">รหัสผ่าน</label>
                 <input type="password" id="password" name="password" required placeholder="********">
             </div>
-            <button type="submit" class="btn btn-primary btn-full">เข้าสู่ระบบ</button>
+            <button type="submit" class="btn btn-primary btn-full">เข้าสู่ระบบด้วยรหัสผ่าน</button>
         </form>
-        </div>
+    </div>
     <script type="module" src="js/auth.js"></script>
 </body>
 </html>
