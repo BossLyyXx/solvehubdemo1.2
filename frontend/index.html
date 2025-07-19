@@ -8,17 +8,52 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/login.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        /* CSS เพิ่มเติมสำหรับปุ่ม Google และ Divider */
+        .btn-google {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background-color: #ffffff;
+            color: #444444;
+            border: 1px solid var(--border-color);
+            width: 100%;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+        .btn-google:hover {
+            background-color: #f8f8f8;
+        }
+        .btn-google img {
+            width: 20px;
+            height: 20px;
+        }
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--text-secondary);
+            margin: 1.5rem 0;
+        }
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .divider:not(:empty)::before {
+            margin-right: .5em;
+        }
+        .divider:not(:empty)::after {
+            margin-left: .5em;
+        }
+    </style>
 </head>
 <body class="login-page">
     <div class="login-container">
         <h1 class="logo">SolveHub</h1>
         <p class="subtitle">เข้าสู่ระบบเพื่อดูเฉลยการบ้าน</p>
-
-        <a id="google-login-btn" href="#" class="btn btn-google">
-            <img src="assets/images/google-logo.svg" alt="Google logo">
-            Sign in with Google (@rmutsvmail.com)
-        </a>
-        <div class="divider"><span>หรือ</span></div>
 
         <form id="login-form">
             <div class="input-group">
@@ -29,8 +64,15 @@
                 <label for="password">รหัสผ่าน</label>
                 <input type="password" id="password" name="password" required placeholder="********">
             </div>
-            <button type="submit" class="btn btn-primary btn-full">เข้าสู่ระบบด้วยรหัสผ่าน</button>
+            <button type="submit" class="btn btn-primary btn-full">เข้าสู่ระบบ</button>
         </form>
+
+        <div class="divider"><span>หรือ</span></div>
+
+        <a id="google-login-btn" href="#" class="btn btn-google">
+            <img src="assets/images/google-logo.svg" alt="Google logo">
+            Sign in with Google (@rmutsvmail.com)
+        </a>
     </div>
     <script type="module" src="js/auth.js"></script>
 </body>
