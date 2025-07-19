@@ -16,14 +16,18 @@
             justify-content: center;
             gap: 12px;
             background-color: #ffffff;
-            color: #444444;
-            border: 1px solid var(--border-color);
+            color: #3c4043; /* Google's official text color */
+            border: 1px solid #dadce0; /* Google's official border color */
             width: 100%;
             text-decoration: none;
-            transition: background-color 0.2s ease;
+            font-weight: 500;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+            transition: all 0.2s ease;
         }
         .btn-google:hover {
-            background-color: #f8f8f8;
+            background-color: #f8f9fa;
+            border-color: #c6c6c6;
+            box-shadow: 0 1px 3px 0 rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15);
         }
         .btn-google img {
             width: 20px;
@@ -70,8 +74,8 @@
         <div class="divider"><span>หรือ</span></div>
 
         <a id="google-login-btn" href="#" class="btn btn-google">
-            <img src="assets/images/google-logo.svg" alt="Google logo">
-            Sign in with Google (@rmutsvmail.com)
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google logo">
+            ดำเนินการต่อด้วย Google
         </a>
     </div>
     <script type="module" src="js/auth.js"></script>
