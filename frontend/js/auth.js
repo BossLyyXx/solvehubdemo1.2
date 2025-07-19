@@ -1,6 +1,13 @@
 import { API_BASE_URL } from './config.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+    // --- VVV ส่วนที่เพิ่มเข้ามา VVV ---
+    const googleLoginBtn = document.getElementById('google-login-btn');
+    if (googleLoginBtn) {
+        googleLoginBtn.href = `${API_BASE_URL}/login/google`;
+    }
+    // --- ^^^ สิ้นสุดส่วนที่เพิ่มเข้ามา ^^^ ---
+
     const loginForm = document.getElementById('login-form');
     
     if (loginForm) {
