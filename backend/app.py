@@ -13,7 +13,6 @@ from authlib.integrations.flask_client import OAuth
 app = Flask(__name__)
 CORS(app)
 basedir = os.path.abspath(os.path.dirname(__file__))
-# Use a secure, randomly generated key in production, read from an environment variable
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'a-very-secret-key-for-session')
 
 # --- Database Config ---
@@ -24,14 +23,16 @@ app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL or 'sqlite:///' + os.path.j
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # --- Upload Folder Config ---
-# Use Render's persistent disk path if on Render, otherwise use a local folder
 if os.environ.get('RENDER'):
+    # On Render, the disk is mounted at this absolute path
     app.config['UPLOAD_FOLDER'] = '/var/data/uploads'
 else:
+    # For local development, create a folder in the backend directory
     app.config['UPLOAD_FOLDER'] = os.path.join(basedir, 'uploads')
+    # Create the folder locally if it doesn't exist
+    if not os.path.exists(app.config['UPLOAD_FOLDER']):
+        os.makedirs(app.config['UPLOAD_FOLDER'])
 
-if not os.path.exists(app.config['UPLOAD_FOLDER']):
-    os.makedirs(app.config['UPLOAD_FOLDER'])
 db = SQLAlchemy(app)
 
 # --- OAuth Configuration ---
